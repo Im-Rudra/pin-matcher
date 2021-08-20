@@ -7,11 +7,13 @@ const resetBtn = document.querySelector('.reset-btn');
 const backspace = document.querySelector('.backspace');
 const submitBtn = document.querySelector('.submit-btn');
 const successMsg = document.querySelector('.notify-success');
+const tryMsg = document.querySelector('.notify-try');
 const errorMsg = document.querySelector('.notify-error');
 const tryCount = document.querySelector('.try-count');
 
 // variable of try count
-let tryLeft = 3;
+let tryLeft = 4;
+tryCount.innerText = tryLeft;
 
 // event listener for pin generation
 generateBtn.addEventListener('click', function () {
@@ -19,7 +21,10 @@ generateBtn.addEventListener('click', function () {
     pinDisplay.value = '';
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
-    tryLeft = 3;
+    tryMsg.style.display = 'none';
+    submitBtn.removeAttribute('disabled');
+    submitBtn.classList.remove('disable');
+    tryLeft = 4;
     tryCountUpdater();
 });
 
@@ -54,7 +59,7 @@ submitBtn.addEventListener('click', function () {
     if (generatorDisplay.value == pinDisplay.value) {
         successMsg.style.display = 'block';
         errorMsg.style.display = 'none';
-        tryLeft = 3;
+        tryLeft = 4;
         tryCountUpdater();
     } else {
         successMsg.style.display = 'none';
@@ -64,6 +69,9 @@ submitBtn.addEventListener('click', function () {
         // clear secret msg if try count is 0
         if (tryLeft == 0) {
             errorMsg.style.display = 'none';
+            tryMsg.style.display = 'block';
+            submitBtn.classList.add('disable');
+            submitBtn.setAttribute('disabled', true);
         }
     }
 });

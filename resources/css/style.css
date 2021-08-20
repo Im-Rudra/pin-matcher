@@ -97,6 +97,7 @@ color: #E0B612;
     border-radius: 15px;
     padding: 5px 20px;
 }
+
 .notify-section{
     width: 35%;
     margin: 0 auto;
@@ -104,4 +105,9 @@ color: #E0B612;
 .action-left {
     color: #FF3C5F;
     margin-top: 10px;
+}
+
+.disable {
+    background-color: #2a3575;
+    color: #8a8a8a;
 }
